@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+{% extends "base.html" %}
+
+{% block content %}
+<html>
+<head>
+	<link rel="stylesheet" type="text/css" href="/static/main.css">
+        <script type=text/javascript src="{{ url_for('static', filename = 'dropdown.js') }}"></script>
+	<link rel="javascript" type="text/js" href="static/dropdown.css"
+	<title>Swipes</title>
+</head>
+<body>
+	<form name="Swipes" action="/submit" target="_blank" method="post">
+            <fieldset>
+                <legend>Seller</legend>
+                <label class="field" for="telNo">Phone Number:</label>
+                 <input id="telNo" name="telNo" placeholder="888-888-8888" type="tel" required pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}">
+                 <span class="validity"></span>
+                <br>
+		<legend>Price</legend>
+                <label class="field" for="price">Price: </label>
+                 <input id="price" name="price" placeholder="8.88" type="tel" required pattern="[0-9].[0-9]{2}">
+                 <span class="validity"></span>
+                <br>
+		<legend>Time</legend>
+                <label class="field" for="time_slot">Time: </label>
+                 <input id="time_slot" name="time_slot" placeholder="88.88" type="tel" required pattern="[0-9]{1-2}.[0-9]{2}">
+                 <span class="validity"></span>
+                <br>
+
+                <label class="field">Restaurant(s):</label>
+		<br/>
+		<div class="container">
+		  <div class="row">
+		    <div class="col-lg-12">
+		      <div class="button-group">
+			<button type="button" class="btn btn-default btn-sm dropdown-toggle" data-toggle="dropdown"><span class="glyphicon glyphicon-cog"></span> <span class="caret"></span></button>
+			<ul class="dropdown-menu">
+			  <li><a href="#" class="small" data-value="option1" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 1</a></li>
+			  <li><a href="#" class="small" data-value="option2" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 2</a></li>
+			  <li><a href="#" class="small" data-value="option3" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 3</a></li>
+			  <li><a href="#" class="small" data-value="option4" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 4</a></li>
+			  <li><a href="#" class="small" data-value="option5" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 5</a></li>
+			  <li><a href="#" class="small" data-value="option6" tabIndex="-1"><input type="checkbox"/>&nbsp;Option 6</a></li>
+			</ul>
+		      </div>
+		    </div>
+		  </div>
+		</div>
+                <select name="location" size="4" multiple>
+                    <option value="bplate" selected>B Plate</option>
+                    <option value="covel">Covel</option>
+                    <option value="deneve">De Neve</option>
+                    <option value="feast">Feast</option>
+                </select>
+                <br>
+                <label class="field">Price:</label>
+                <select name="price">
+                    <option value="3">$3.00</option>
+                    <option value="3.5">$3.50</option>
+                    <option value="4">$4.00</option>
+                    <option value="4.5">$4.50</option>
+                    <option value="5" selected>$5.00</option>
+                    <option value="5.5">$5.50</option>
+                    <option value="6">$6.00</option>
+                    <option value="6.5">$6.50</option>
+                    <option value="7">$7.00</option>
+                    <option value="7.5">$7.50</option>
+                    <option value="8">$8.00</option>
+                </select>
+            </fieldset>
+            <input type="submit" value="Offer">
+        </form>
+</body>
+</html>
+{% endblock %}

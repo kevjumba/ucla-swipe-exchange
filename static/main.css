@@ -1,0 +1,68 @@
+input:invalid+span:after {
+    font-size: 1.5em;
+    font-weight: normal;
+    font-family: Comic Sans MS;
+    position: absolute;
+    content: ':(';
+    padding-left: 5px;
+    color: #8b0000;
+}
+
+input:valid+span:after {
+    font-size: 1.5em;
+    font-weight: normal;
+    font-family: Comic Sans MS;
+    position: absolute;
+    content: ':)';
+    padding-left: 5px;
+    color: #009000;
+}
+
+legend {
+    color: black;
+    font-size: 2em;
+    font-weight: bold;
+    font-family: Comic Sans MS;
+    border: 4px ridge red;
+    border-radius: 15px;
+    padding: 5px;
+}
+
+select, input, input:valid+span:after {
+    color: red;
+    font-size: 1.5em;
+    font-weight: normal;
+    font-family: Comic Sans MS;
+}
+
+.field {
+    color: black;
+    font-size: 1.7em;
+    font-weight: bold;
+    font-family: Ariel;
+}
+
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+    width: 100%;
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+input[type=submit]:hover {
+    background-color: #45a049;
+}

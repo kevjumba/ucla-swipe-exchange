@@ -1,0 +1,61 @@
+from __future__ import print_function
+from flask import Flask, abort, render_template
+from flask import url_for, redirect, request, make_response, session, send_from_directory
+import os
+import functions
+dBase32 = '0123456789ABCDEFGHJKLMNPRSTUVWXY'
+
+app = Flask(__name__, static_url_path='/static')
+
+app.secret_key = "not a secret key"
+
+
+@app.route('/')
+def index():
+    return render_template('index.html', name = "index")
+
+@app.route('/submit', methods = ['POST'])
+def submit_offer():
+    #functions.insertOrUpdate(location, price, 1, time)
+    phone_num = request.form.get('telNo')
+    dining_hall = request.form.get('location')
+    time_slot = request.form.get('time_slot')
+    price = request.form.get('price')
+    print (dining_hall)
+    print(price)
+    print(time_slot)
+    functions.insertOrUpdate(dining_hall, price, 1, time_slot, time_slot)
+    return render_template('index.html', name = "index")
+@app.route('/search', methods = ['GET', 'POST'])
+def find_offers():
+    return render_template('search.html', name = "search")
+
+@app.route('/get_offers', methods = ['GET', 'POST'])
+def get_offers():
+    dining_hall = request.form.get('requested_location')
+    time_slot = request.form.get('requested_time_slot')
+    price = request.form.get('requested_price')
+    print(dining_hall)
+    print(price)
+    print(time_slot)
+    match = functions.queryByAttributes(dining_hall, price, time_slot, 1)
+    info = ""
+    print (match)
+    if(match):
+        for i in match:
+            info+=(i+'\n')
+    else:
+        print("There is no matching database")
+        info = "No Matching Database Entry"""
+    filtered_info = ""
+    for i in range(len(info)):
+        if not info[i].isdigit():
+            filtered_info += info[i]
+    return render_template('search.html', name = "get_offers", info = info)
+
+@app.route('/select_offer', methods = ['GET', 'POST'])
+def select_offers():
+    selection = request.form.get('selection')
+    return render_template('search.html', name = "search", selection = selection)
+if __name__ == '__main__': 
+    app.run()
